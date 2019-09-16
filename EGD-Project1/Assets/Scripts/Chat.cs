@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.Events;
 
 [System.Serializable]
@@ -19,12 +20,17 @@ public class Chat : MonoBehaviour
     public GameObject girlBox;
     public GameObject myBox;
 
+    public GameObject choiceA;
+    public GameObject choiceB;
+    public string myChoice;
+
     // Start is called before the first frame update
     void Start()
     {
         index = 0;
-        CreateChatBox(true, "nya");
-        CreateChatBox(false, "okie dokie andhjhjhjhjhjhj.");
+        StartCoroutine(ChatStart());
+        //CreateChatBox(true, "nya");
+        //CreateChatBox(false, "okie dokie andhjhjhjhjhjhj.");
         //ChatStart();
     }
 
@@ -34,17 +40,40 @@ public class Chat : MonoBehaviour
         
     }
 
-    public void ChatStart()
+    public IEnumerator ChatStart()
     {
         bool checkTurn = false;
-        for (index = 0; index < texts.Count -1; index++)
+        for (index = 0; index < texts.Count; index++)
         {
             checkTurn = texts[index].needSelection;
+            print(checkTurn);
             if (checkTurn)
             {
-                //next doing choices have to sleep
+                if (texts[index].choices.Count != 2)
+                {
+                    print("hey where is your choices??");
+                }
+                else
+                {
+                    choiceA.GetComponentInChildren<Text>().text = texts[index].choices[0];
+                    choiceB.GetComponentInChildren<Text>().text = texts[index].choices[1];
+                    choiceA.SetActive(true);
+                    choiceB.SetActive(true);
+                    yield return StartCoroutine(WaitForActions());
+                    CreateChatBox(checkTurn, myChoice);
+                    choiceA.SetActive(false);
+                    choiceB.SetActive(false);
+                    //print("blah");
+                    //print (myChoice);
+                }
+
+            }
+            else
+            {
+                CreateChatBox(checkTurn, texts[index].content);
             }
         }
+        // do something like jump to another scene
     }
 
     public void CreateChatBox(bool myTurn, string text)
@@ -67,7 +96,21 @@ public class Chat : MonoBehaviour
         OverflowChat overScript = go.GetComponentInChildren<OverflowChat>();
         overScript.SetContent(text);
         overScript.AdjustWidth();
-        
 
+    }
+
+    public IEnumerator WaitForActions()
+    {
+        myChoice = null;
+        while (myChoice == null)
+        {
+            //print(myChoice);
+            yield return null;
+        }
+    }
+
+    public void SetMyChoice(string choice)
+    {
+        myChoice = choice;
     }
 }

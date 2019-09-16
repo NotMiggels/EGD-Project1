@@ -12,7 +12,7 @@ public class OverflowChat : MonoBehaviour
     {
 
         AdjustWidth();
-        print("hjhj");
+        //print("hjhj");
         //this.GetComponent<HorizontalLayoutGroup>().padding.left = leftPadding;
         //this.GetComponent<HorizontalLayoutGroup>().padding.right = rightPadding;
         
@@ -21,7 +21,7 @@ public class OverflowChat : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        AdjustWidth();
     }
 
     public void AdjustWidth()
@@ -39,7 +39,7 @@ public class OverflowChat : MonoBehaviour
         }
         else
         {
-            this.GetComponent<RectTransform>().anchoredPosition = new Vector3(-209 + textLength / 2 - leftPadding, 1, 0);
+            this.GetComponent<RectTransform>().anchoredPosition = new Vector3(-200 + textLength / 2 - leftPadding, 1, 0);
             this.GetComponent<HorizontalLayoutGroup>().padding.left = leftPadding;
             this.GetComponent<HorizontalLayoutGroup>().padding.right = rightPadding;
         }
