@@ -1049,11 +1049,11 @@ RectTransform:
   - {fileID: 527400951}
   - {fileID: 459195072}
   m_Father: {fileID: 1195085414}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 2, y: -0.1}
+  m_AnchoredPosition: {x: 0.7, y: -0.1}
   m_SizeDelta: {x: 600.2, y: 433.7}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &364399123
@@ -2219,6 +2219,64 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 657613342}
   m_CullTransparentMesh: 0
+--- !u!1 &665516518
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 665516519}
+  - component: {fileID: 665516520}
+  m_Layer: 5
+  m_Name: Chatcontrol
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &665516519
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 665516518}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1195085414}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &665516520
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 665516518}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26c93c1886bc69b42aa97cff5cf2db5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  texts:
+  - content: 
+    needSelection: 0
+    choices: []
+  - content: 
+    needSelection: 0
+    choices: []
+  index: 0
+  girlBox: {fileID: 3550375799184640441, guid: a572247b529fe9b4aa276005f2f189e6, type: 3}
+  myBox: {fileID: 1354266717800549078, guid: 582d02074021d7d4298c9ed642ae2cec, type: 3}
 --- !u!1 &715260549
 GameObject:
   m_ObjectHideFlags: 0
@@ -2518,7 +2576,7 @@ RectTransform:
   - {fileID: 471805206}
   - {fileID: 1047897208}
   m_Father: {fileID: 1195085414}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -3331,7 +3389,7 @@ GameObject:
   - component: {fileID: 1103352425}
   - component: {fileID: 1103352424}
   m_Layer: 5
-  m_Name: Content
+  m_Name: ChatContent
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3392,8 +3450,8 @@ MonoBehaviour:
   m_ChildAlignment: 1
   m_Spacing: 0
   m_ChildForceExpandWidth: 1
-  m_ChildForceExpandHeight: 1
-  m_ChildControlWidth: 0
+  m_ChildForceExpandHeight: 0
+  m_ChildControlWidth: 1
   m_ChildControlHeight: 0
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
@@ -3609,6 +3667,7 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 8.464624, y: 8.464624, z: 8.464624}
   m_Children:
+  - {fileID: 665516519}
   - {fileID: 1452563425}
   - {fileID: 885340291}
   - {fileID: 1395289419}
@@ -3689,7 +3748,7 @@ RectTransform:
   m_LocalScale: {x: 0.090326, y: 0.090326, z: 0.090326}
   m_Children: []
   m_Father: {fileID: 1195085414}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -3765,7 +3824,7 @@ RectTransform:
   m_Children:
   - {fileID: 1901660443}
   m_Father: {fileID: 1195085414}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -5415,6 +5474,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: dialogue_me
       objectReference: {fileID: 0}
+    - target: {fileID: 1354266717800549078, guid: 582d02074021d7d4298c9ed642ae2cec,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1354266717800549097, guid: 582d02074021d7d4298c9ed642ae2cec,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5483,7 +5547,7 @@ PrefabInstance:
     - target: {fileID: 1354266717800549097, guid: 582d02074021d7d4298c9ed642ae2cec,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 579.8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1354266717800549097, guid: 582d02074021d7d4298c9ed642ae2cec,
         type: 3}
@@ -5543,6 +5607,11 @@ PrefabInstance:
     - target: {fileID: 1354266718551855188, guid: 582d02074021d7d4298c9ed642ae2cec,
         type: 3}
       propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1354266718551855188, guid: 582d02074021d7d4298c9ed642ae2cec,
+        type: 3}
+      propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -5559,6 +5628,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: dialogue_girl
       objectReference: {fileID: 0}
+    - target: {fileID: 3550375799184640441, guid: a572247b529fe9b4aa276005f2f189e6,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3550375799184640442, guid: a572247b529fe9b4aa276005f2f189e6,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5627,7 +5701,7 @@ PrefabInstance:
     - target: {fileID: 3550375799184640442, guid: a572247b529fe9b4aa276005f2f189e6,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 579.8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3550375799184640442, guid: a572247b529fe9b4aa276005f2f189e6,
         type: 3}
@@ -5687,6 +5761,11 @@ PrefabInstance:
     - target: {fileID: 3550375799884468309, guid: a572247b529fe9b4aa276005f2f189e6,
         type: 3}
       propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3550375799884468309, guid: a572247b529fe9b4aa276005f2f189e6,
+        type: 3}
+      propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
