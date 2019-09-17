@@ -7,9 +7,13 @@ using UnityEngine.Events;
 [System.Serializable]
 public class ChatText
 {
+    public int textNum;
     public string content;
     public bool needSelection;
     public List<string> choices;
+    //public bool branching;
+    public List<int> linkTo;
+    public bool lastDialogue;
 }
 
 public class Chat : MonoBehaviour
@@ -24,6 +28,8 @@ public class Chat : MonoBehaviour
     public GameObject choiceB;
     public string myChoice;
 
+    public Scrollbar vertBar;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -37,13 +43,13 @@ public class Chat : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        vertBar.value = 0;
     }
 
     public IEnumerator ChatStart()
     {
         bool checkTurn = false;
-        for (index = 0; index < texts.Count; index++)
+        while(true)
         {
             checkTurn = texts[index].needSelection;
             print(checkTurn);
@@ -61,6 +67,14 @@ public class Chat : MonoBehaviour
                     choiceB.SetActive(true);
                     yield return StartCoroutine(WaitForActions());
                     CreateChatBox(checkTurn, myChoice);
+                    if (myChoice == texts[index].choices[0])
+                    {
+                        index = texts[index].linkTo[0];
+                    }
+                    else
+                    {
+                        index = texts[index].linkTo[1];
+                    }
                     choiceA.SetActive(false);
                     choiceB.SetActive(false);
                     //print("blah");
@@ -70,8 +84,20 @@ public class Chat : MonoBehaviour
             }
             else
             {
+                yield return new WaitForSeconds(1);
                 CreateChatBox(checkTurn, texts[index].content);
+                if (texts[index].lastDialogue)
+                {
+                    print("scene change");
+                    break;
+                    //Change scene
+                }
+                index = texts[index].linkTo[0];
+
             }
+
+
+            //index = texts[index].linkTo;
         }
         // do something like jump to another scene
     }
@@ -96,6 +122,7 @@ public class Chat : MonoBehaviour
         OverflowChat overScript = go.GetComponentInChildren<OverflowChat>();
         overScript.SetContent(text);
         overScript.AdjustWidth();
+
 
     }
 

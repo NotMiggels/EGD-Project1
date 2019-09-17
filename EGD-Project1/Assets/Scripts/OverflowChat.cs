@@ -30,25 +30,25 @@ public class OverflowChat : MonoBehaviour
         int leftPadding = (int)(0.00017 * textLength * textLength - 0.1662 * textLength - 8);
         int rightPadding = (int)(-0.0469 * textLength - 11);
 
-        this.GetComponent<RectTransform>().sizeDelta = new Vector2(textLength, 100);
+        this.GetComponent<RectTransform>().sizeDelta = new Vector2(textLength-leftPadding-rightPadding, 100);
         if (rightOrient)
         {
-            this.GetComponent<RectTransform>().anchoredPosition = new Vector3(193 - textLength / 2 + rightPadding, 1, 0);
-            this.GetComponent<HorizontalLayoutGroup>().padding.right = leftPadding;
-            this.GetComponent<HorizontalLayoutGroup>().padding.left = rightPadding;
+            this.GetComponent<RectTransform>().anchoredPosition = new Vector3(180 - (textLength - leftPadding - rightPadding) / 2 - rightPadding, 0, 0);
+            this.GetComponent<HorizontalLayoutGroup>().padding.right = -rightPadding;
+            this.GetComponent<HorizontalLayoutGroup>().padding.left = -leftPadding;
         }
         else
         {
-            this.GetComponent<RectTransform>().anchoredPosition = new Vector3(-200 + textLength / 2 - leftPadding, 1, 0);
-            this.GetComponent<HorizontalLayoutGroup>().padding.left = leftPadding;
-            this.GetComponent<HorizontalLayoutGroup>().padding.right = rightPadding;
+            this.GetComponent<RectTransform>().anchoredPosition = new Vector3(-170 + (textLength - leftPadding - rightPadding) / 2 + leftPadding, 0, 0);
+            this.GetComponent<HorizontalLayoutGroup>().padding.left = -leftPadding;
+            this.GetComponent<HorizontalLayoutGroup>().padding.right = -rightPadding;
         }
     }
 
     private int CalculateLengthOfMessage()
     {
         int totalLength = 0;
-        Text chatText = this.GetComponent<Text>();
+        Text chatText = this.GetComponentInChildren<Text>();
 
         Font myFont = chatText.font;  //chatText is my Text component
         CharacterInfo characterInfo = new CharacterInfo();
@@ -67,7 +67,7 @@ public class OverflowChat : MonoBehaviour
 
     public void SetContent(string blah)
     {
-        Text chatText = this.GetComponent<Text>();
+        Text chatText = this.GetComponentInChildren<Text>();
         chatText.text = blah;
         AdjustWidth();
     }
