@@ -6,11 +6,12 @@ using UnityEngine;
 public class LikeTweet : MonoBehaviour
 {
     public Sprite redHeart;
-    private bool liked = false;
+    public Tweet tweetScript;
+    private bool liked;
     // Start is called before the first frame update
     void Start()
     {
-        
+        liked = tweetScript.liked;
     }
 
     // Update is called once per frame
@@ -24,7 +25,8 @@ public class LikeTweet : MonoBehaviour
         if (liked == false)
         {
             this.GetComponent<Image>().sprite = redHeart;
-            //this.GetComponentInChildren<Text>().text
+            tweetScript.liked = true;
+            tweetScript.SetAllValues();
         }
     }
 }

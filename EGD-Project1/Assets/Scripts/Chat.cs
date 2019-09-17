@@ -30,12 +30,14 @@ public class Chat : MonoBehaviour
     public GameObject choiceB;
     public string myChoice;
 
-    public Scrollbar vertBar;
+    public ScrollRect sRect;
+    private GameObject vertBar;
 
     // Start is called before the first frame update
     void Start()
     {
         index = 0;
+        vertBar = GameObject.Find("Chat Vertical");
         StartCoroutine(ChatStart());
         //CreateChatBox(true, "nya");
         //CreateChatBox(false, "okie dokie andhjhjhjhjhjhj.");
@@ -45,7 +47,6 @@ public class Chat : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        vertBar.value = 0;
     }
 
     public IEnumerator ChatStart()
@@ -53,6 +54,7 @@ public class Chat : MonoBehaviour
         bool checkTurn = false;
         while(true)
         {
+            
             checkTurn = texts[index].needSelection;
             print(checkTurn);
             if (checkTurn)
@@ -69,6 +71,12 @@ public class Chat : MonoBehaviour
                     choiceB.SetActive(true);
                     yield return StartCoroutine(WaitForActions());
                     CreateChatBox(checkTurn, myChoice);
+                    if (index >= 5)
+                    {
+                        sRect.velocity = new Vector2(0f, 1000f);
+                    }
+
+                    //yield return StartCoroutine(ScrollToBottom());
                     if (myChoice == texts[index].choices[0])
                     {
                         index = texts[index].linkTo[0];
@@ -86,19 +94,27 @@ public class Chat : MonoBehaviour
             }
             else
             {
+                
                 yield return new WaitForSeconds(1);
                 CreateChatBox(checkTurn, texts[index].content);
+                if (index >= 5)
+                {
+                    sRect.velocity = new Vector2(0f, 1000f);
+                }
+                //Canvas.ForceUpdateCanvases();
+                //yield return StartCoroutine(ScrollToBottom());
                 if (texts[index].lastDialogue)
                 {
                     print("scene change");
+                    
                     break;
                     //Change scene
                 }
+                
                 index = texts[index].linkTo[0];
 
             }
-
-
+            
             //index = texts[index].linkTo;
         }
         yield return new WaitForSeconds(3);
@@ -108,17 +124,19 @@ public class Chat : MonoBehaviour
 
     public void CreateChatBox(bool myTurn, string text)
     {
+
         GameObject go;
         
         if (myTurn)
         {
             go = Instantiate(myBox);
             
+
         }
         else
         {
             go = Instantiate(girlBox);
-            
+
         }
         go.transform.parent = GameObject.Find("ChatContent").transform;
         go.GetComponent<RectTransform>().localScale = new Vector3(1.0f, 1.0f, 1.0f);
@@ -126,6 +144,7 @@ public class Chat : MonoBehaviour
         OverflowChat overScript = go.GetComponentInChildren<OverflowChat>();
         overScript.SetContent(text);
         overScript.AdjustWidth();
+
 
 
     }
@@ -139,7 +158,7 @@ public class Chat : MonoBehaviour
             yield return null;
         }
     }
-
+    
     public void SetMyChoice(string choice)
     {
         myChoice = choice;
