@@ -23,10 +23,60 @@ public class Tweet : MonoBehaviour
     private bool alreadyLiked;
     public int like;
 
+    private GameObject contentGo;
+    private GameObject avatarGo;
+    private GameObject name_dateGo;
+    private GameObject tweetGo;
+    private GameObject imageGo;
+    private GameObject retweetGo;
+    private GameObject commentGo;
+    private GameObject likeGo;
+    private GameObject separateGo;
     // Start is called before the first frame update
     void Start()
     {
         alreadyLiked = false;
+        foreach (Transform t in this.transform)
+        {
+            if (t.name == "avatar")
+            {
+                avatarGo = t.gameObject;
+            }
+            else if (t.name == "name_date")
+            {
+                name_dateGo = t.gameObject;
+            }
+            else if (t.name == "content")
+            {
+                contentGo = t.gameObject;
+            }
+            else if (t.name == "image")
+            {
+                if (withImage)
+                {
+                    t.gameObject.SetActive(true);
+                    imageGo = t.gameObject;
+                }
+                else
+                {
+                    t.gameObject.SetActive(false);
+                }
+            }
+            else if (t.name == "retweet")
+            {
+                retweetGo = t.gameObject;
+            }
+            else if (t.name == "comments")
+            {
+                commentGo = t.gameObject;
+            }
+            else if (t.name == "like")
+            {
+
+                likeGo = t.gameObject;
+
+            }
+        }
         SetAllValues();
     }
 
@@ -38,43 +88,41 @@ public class Tweet : MonoBehaviour
 
     public void SetAllValues()
     {
-        foreach (Transform t in this.transform)
+        avatarGo.GetComponent<Image>().sprite = avatar;
+        name_dateGo.GetComponent<Text>().text = "<b>" + username + "</b>" + "  ·  " + date;
+        contentGo.GetComponentInChildren<Text>().text = tweet;
+
+        //image
+        if (withImage)
         {
-            if (t.name == "avatar")
-            {
-                t.GetComponent<Image>().sprite = avatar;
-            } else if (t.name == "name_date")
-            {
-                t.GetComponent<Text>().text = "<b>" + username + "</b>" + "  ·  " + date;
-            } else if (t.name == "content")
-            {
-                t.GetComponentInChildren<Text>().text = tweet;
-            } else if (t.name == "image")
-            {
-                if (withImage)
-                {
-                    t.gameObject.SetActive(true);
-                    t.GetComponent<Image>().sprite = image;
-                } else
-                {
-                    t.gameObject.SetActive(false);
-                }
-            } else if (t.name == "retweet")
-            {
-                t.GetComponentInChildren<Text>().text = retweet.ToString();
-            } else if (t.name == "comments")
-            {
-                t.GetComponentInChildren<Text>().text = comment.ToString();
-            } else if (t.name == "like")
-            {
-                if (liked && !alreadyLiked)
-                {
-                    like += 1;
-                    alreadyLiked = true;
-                }
-                t.GetComponentInChildren<Text>().text = like.ToString();
-                
-            }
+            imageGo.GetComponent<Image>().sprite = image;
+        }
+
+        retweetGo.GetComponentInChildren<Text>().text = retweet.ToString();
+        commentGo.GetComponentInChildren<Text>().text = retweet.ToString();
+        if (liked && !alreadyLiked)
+        {
+            like += 1;
+            alreadyLiked = true;
+        }
+        likeGo.GetComponentInChildren<Text>().text = like.ToString();
+        
+        Text tweetText = contentGo.GetComponentInChildren<Text>();
+        //print(20 /13);
+        int contentHeight = (int)(tweetText.preferredHeight) - ((int)(tweetText.preferredHeight) / 25) * 11 ;
+        if (withImage)
+        {
+            
+            
+            contentHeight += 50;
+        }
+        contentGo.GetComponent<RectTransform>().sizeDelta = new Vector2(100, contentHeight + 17);
+        
+        if (withImage)
+        {
+            imageGo.GetComponent<RectTransform>().anchoredPosition = new Vector3(19.9f,
+                contentGo.GetComponent<RectTransform>().anchoredPosition.y + contentGo.GetComponent<RectTransform>().sizeDelta.y / 2 + contentGo.GetComponent<VerticalLayoutGroup>().padding.top - contentHeight + 37,
+                0);
         }
     }
 }
