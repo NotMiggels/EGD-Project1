@@ -15,23 +15,29 @@ public class Clicker : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            //print("blahblah");
+            //some presettings
             Vector2 raypos = new Vector2(Camera.main.ScreenToWorldPoint(Input.mousePosition).x,
              Camera.main.ScreenToWorldPoint(Input.mousePosition).y);
             RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
-           //Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
+            // "hit" checks current clicks
             if (hit.collider != null)
             {
-                //print("hit ever!");
+                //printname can print the name of the object that mouse clicks on
                 PrintName(hit.transform.gameObject);
+                
+                // check name
                 if (hit.transform.gameObject.name == "desktop")
                 {
+                    // and do whatever you wnana do
                     hit.transform.gameObject.GetComponent<OpenTwitter>().OpenCanvas();
                 }
+
+                // basically just write if functions and call public voids.
             }
             else
             {
+                // if not click on any colliders
                 print("no collider");
             }
         }
