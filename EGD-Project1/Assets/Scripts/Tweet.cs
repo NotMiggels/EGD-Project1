@@ -32,50 +32,82 @@ public class Tweet : MonoBehaviour
     private GameObject commentGo;
     private GameObject likeGo;
     private GameObject separateGo;
+
+    private GameObject firstlineGo;
+    private GameObject secondlineGo;
+    private GameObject thirdlineGo;
     // Start is called before the first frame update
     void Start()
     {
         alreadyLiked = false;
+        // assign gos
         foreach (Transform t in this.transform)
         {
-            if (t.name == "avatar")
+            if (t.name == "firstline")
             {
-                avatarGo = t.gameObject;
-            }
-            else if (t.name == "name_date")
-            {
-                name_dateGo = t.gameObject;
-            }
-            else if (t.name == "content")
-            {
-                contentGo = t.gameObject;
-            }
-            else if (t.name == "image")
-            {
-                if (withImage)
+                firstlineGo = t.gameObject;
+                foreach (Transform tt in t.transform)
                 {
-                    t.gameObject.SetActive(true);
-                    imageGo = t.gameObject;
-                }
-                else
-                {
-                    t.gameObject.SetActive(false);
+                    if (tt.name == "avatar")
+                    {
+                        avatarGo = tt.gameObject;
+                    }
+                    else if (tt.name == "name_date")
+                    {
+                        name_dateGo = tt.gameObject;
+                    }
                 }
             }
-            else if (t.name == "retweet")
+            else if (t.name == "secondline")
             {
-                retweetGo = t.gameObject;
+                secondlineGo = t.gameObject;
+                foreach (Transform tt in t.transform)
+                {
+                    if (tt.name == "content")
+                    {
+                        contentGo = tt.gameObject;
+                    }
+                    else if (tt.name == "image")
+                    {
+                        if (withImage)
+                        {
+                            tt.gameObject.SetActive(true);
+                            imageGo = tt.gameObject;
+                        }
+                        else
+                        {
+                            tt.gameObject.SetActive(false);
+                        }
+                    }
+                }
             }
-            else if (t.name == "comments")
+            else if (t.name == "thirdline")
             {
-                commentGo = t.gameObject;
-            }
-            else if (t.name == "like")
-            {
+                thirdlineGo = t.gameObject;
+                foreach (Transform tt in t.transform)
+                {
+                    if (tt.name == "retweet")
+                    {
+                        retweetGo = tt.gameObject;
+                    }
+                    else if (tt.name == "comments")
+                    {
+                        commentGo = tt.gameObject;
+                    }
+                    else if (tt.name == "like")
+                    {
 
-                likeGo = t.gameObject;
+                        likeGo = tt.gameObject;
 
+                    }
+                    else if (tt.name == "separateline")
+                    {
+                        separateGo = tt.gameObject;
+                    }
+                }
+                    
             }
+            
         }
         SetAllValues();
     }
@@ -112,12 +144,24 @@ public class Tweet : MonoBehaviour
         int contentHeight = (int)(tweetText.preferredHeight) - ((int)(tweetText.preferredHeight) / 25) * 11 ;
         if (withImage)
         {
-            
-            
             contentHeight += 50;
         }
+        //content box height adjust
         contentGo.GetComponent<RectTransform>().sizeDelta = new Vector2(100, contentHeight + 17);
+        //secondline height adjust
+        if (withImage)
+        {
+            secondlineGo.GetComponent<RectTransform>().sizeDelta = new Vector2(100, contentHeight + 17 + 48.3f - contentGo.GetComponent<VerticalLayoutGroup>().padding.top);
+            this.GetComponent<RectTransform>().sizeDelta = new Vector2(388.2f, contentHeight + 17 + 48.3f + 82 + 27 +
+                this.GetComponent<VerticalLayoutGroup>().padding.top + this.GetComponent<VerticalLayoutGroup>().padding.bottom);
+        } else
+        {
+            secondlineGo.GetComponent<RectTransform>().sizeDelta = new Vector2(100, contentHeight + 17 + 22 - contentGo.GetComponent<VerticalLayoutGroup>().padding.top);
+            this.GetComponent<RectTransform>().sizeDelta = new Vector2(388.2f, contentHeight + 17 + 22 + 82 + 27 +  
+                this.GetComponent<VerticalLayoutGroup>().padding.top + this.GetComponent<VerticalLayoutGroup>().padding.bottom);
+        }
         
+        //image pos adjust
         if (withImage)
         {
             imageGo.GetComponent<RectTransform>().anchoredPosition = new Vector3(19.9f,
