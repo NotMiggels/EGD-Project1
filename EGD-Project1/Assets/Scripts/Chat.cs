@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
+
 
 [System.Serializable]
 public class ChatText
@@ -99,6 +101,8 @@ public class Chat : MonoBehaviour
 
             //index = texts[index].linkTo;
         }
+        yield return new WaitForSeconds(3);
+        SceneManager.LoadScene(2);
         // do something like jump to another scene
     }
 
