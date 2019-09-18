@@ -1,11 +1,11 @@
 ID,Name,Dialogue
 J,Joe,Yo yo yo what it be
-PJ,Peter,"Hey Joe, do you know what I should do if I go out with Grace tonight?"
+P,Peter,"Hey Joe, do you know what I should do if I go out with Grace tonight?"
 JC,Joe,"Listen Dawg, you talk to girls and you listen to girls. As long as you follow the flow and pretend to be on the same page then your fine."
-PJ1,Peter,Pretend? But shouldn't I be MY own person and let her be HER own person?
-PJ2,Peter,And how do I  go about being on the same page?
-J1,Joe,You asked me what to do and I have given you such sage advice. What more can you ask of me bro? This is just how life works
+P1,Peter,Pretend? But shouldn't I be MY own person and let her be HER own person?
+P2,Peter,And how do I go about being on the same page?
+J1E,Joe,You asked me what to do and I have given you such sage advice. What more can you ask of me bro? This is just how life works
 J2C,Joe,Do you know about the lime in the coconut?
-PJ21,Peter,The what?
-PJ22,Peter,Do YOU know about the lime in the coconut?
-J2,Joe,"You are not worthy yet, come back tomorrow after the date"
+P21,Peter,The what?
+P22,Peter,Do YOU know about the lime in the coconut?
+J2E,Joe,"You are not worthy yet, come back tomorrow after the date"
