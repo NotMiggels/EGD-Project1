@@ -175,7 +175,6 @@ public class Dialogue_F : MonoBehaviour
                             
                         } else
                         {
-                            joeGo.SetActive(true);
                             beaGo.SetActive(true);
                         }
                         
@@ -193,7 +192,6 @@ public class Dialogue_F : MonoBehaviour
                         } else
                         {
                             joeGo.SetActive(true);
-                            beaGo.SetActive(true);
                         }
                         
                         this.gameObject.SetActive(false);
