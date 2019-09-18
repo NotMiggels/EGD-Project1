@@ -30,7 +30,7 @@ public class SendTweet : MonoBehaviour
         Tweet goTweet = go.GetComponent<Tweet>();
         goTweet.tweet = userInput.text;
         goTweet.withImage = false;
-        goTweet.username = "alittlejefe";
+        goTweet.username = "littlejefe";
         goTweet.date = "Sep 20th";
         goTweet.retweet = 0;
         goTweet.comment = 0;

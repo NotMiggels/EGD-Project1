@@ -1597,7 +1597,18 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: 48cfb2c520bf51e44b37f59761a42a44,
         type: 3}
+    - target: {fileID: 1152825980, guid: dc6bcae2dd82b8c4c8aedf03345767f2, type: 3}
+      propertyPath: jefeAvatar
+      value: 
+      objectReference: {fileID: 21300000, guid: c42d15b7673759149834e243ec22bf9e,
+        type: 3}
     - target: {fileID: 1169593046377719233, guid: dc6bcae2dd82b8c4c8aedf03345767f2,
+        type: 3}
+      propertyPath: avatar
+      value: 
+      objectReference: {fileID: 21300000, guid: d175f0212e9efdb4186248588528329e,
+        type: 3}
+    - target: {fileID: 1169593046176304887, guid: dc6bcae2dd82b8c4c8aedf03345767f2,
         type: 3}
       propertyPath: avatar
       value: 
@@ -1605,10 +1616,9 @@ PrefabInstance:
         type: 3}
     - target: {fileID: 1169593046176304887, guid: dc6bcae2dd82b8c4c8aedf03345767f2,
         type: 3}
-      propertyPath: avatar
-      value: 
-      objectReference: {fileID: 21300000, guid: d175f0212e9efdb4186248588528329e,
-        type: 3}
+      propertyPath: username
+      value: Papasmurf
+      objectReference: {fileID: 0}
     - target: {fileID: 1169593046218124150, guid: dc6bcae2dd82b8c4c8aedf03345767f2,
         type: 3}
       propertyPath: username
@@ -1648,8 +1658,13 @@ PrefabInstance:
         type: 3}
       propertyPath: avatar
       value: 
-      objectReference: {fileID: 21300000, guid: 5e489af57709b06468eed29ab51d5058,
+      objectReference: {fileID: 21300000, guid: c42d15b7673759149834e243ec22bf9e,
         type: 3}
+    - target: {fileID: 1169593045419791294, guid: dc6bcae2dd82b8c4c8aedf03345767f2,
+        type: 3}
+      propertyPath: username
+      value: littlejefe
+      objectReference: {fileID: 0}
     - target: {fileID: 1169593045631068515, guid: dc6bcae2dd82b8c4c8aedf03345767f2,
         type: 3}
       propertyPath: avatar
