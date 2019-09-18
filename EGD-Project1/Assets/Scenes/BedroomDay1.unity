@@ -451,6 +451,11 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1169593046176304887, guid: c71466fad297844f48e7fa4a51543551,
+        type: 3}
+      propertyPath: username
+      value: CocoSour
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c71466fad297844f48e7fa4a51543551, type: 3}
 --- !u!1001 &7188000740329756158
