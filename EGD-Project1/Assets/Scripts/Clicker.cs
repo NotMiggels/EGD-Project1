@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Clicker : MonoBehaviour
 {
+    public GameObject canv;
     // Start is called before the first frame update
     void Start()
     {
@@ -31,6 +32,14 @@ public class Clicker : MonoBehaviour
                 {
                     // and do whatever you wnana do
                     hit.transform.gameObject.GetComponent<OpenTwitter>().OpenCanvas();
+                }
+
+                if (hit.transform.gameObject.tag == "character")
+                {
+                    GameObject character = hit.transform.gameObject;
+                    character.SetActive(false);
+                    canv.SetActive(true);
+                    canv.GetComponent<Dialogue>().dialogueStart(int.Parse(character.name));
                 }
 
                 // basically just write if functions and call public voids.
