@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Option
   - character
+  - talkingto
+  - talkedto
   layers:
   - Default
   - TransparentFX

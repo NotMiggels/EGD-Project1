@@ -9,6 +9,7 @@ public class Clicker : MonoBehaviour
     public AudioSource clickSound;
     private GameObject temperateGo;
     private bool changeColor = false;
+    private GameObject []GOA;
     // Start is called before the first frame update
     void Start()
     {
@@ -46,7 +47,7 @@ public class Clicker : MonoBehaviour
             {
                 
                 //printname can print the name of the object that mouse clicks on
-                PrintName(hit.transform.gameObject);
+                //PrintName(hit.transform.gameObject);
                 
                 // check name
                 if (hit.transform.gameObject.name == "desktop")
@@ -58,6 +59,7 @@ public class Clicker : MonoBehaviour
                 if (hit.transform.gameObject.tag == "character")
                 {
                     GameObject character = hit.transform.gameObject;
+                    character.tag = "talkingto";
                     character.SetActive(false);
                     canv.SetActive(true);
                     canv.GetComponent<Dialogue>().dialogueStart(int.Parse(character.name));

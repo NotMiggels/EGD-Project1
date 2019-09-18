@@ -13,6 +13,7 @@ public class Dialogue : MonoBehaviour
     private string[,] dgrid;
     private bool dia;
     public Text dbox;
+    public GameObject mainbox;
     public GameObject choicebox1;
     public GameObject choicebox2;
     private string path;
@@ -30,6 +31,7 @@ public class Dialogue : MonoBehaviour
         path = "";
         choicebox1.GetComponent<Button>().onClick.AddListener(pathchange1);
         choicebox2.GetComponent<Button>().onClick.AddListener(pathchange2);
+        mainbox.GetComponent<Button>().onClick.AddListener(progess);
     }
 
     // Update is called once per frame
@@ -37,29 +39,31 @@ public class Dialogue : MonoBehaviour
     {
         print(path);
         dialoguePrint(dgrid, y);
-        if (Input.GetMouseButtonDown(0) && dia){ 
-            if (path == "")
+        if (dia && path != ""){ 
+            for (int i = 0; i < dgrid.GetLength(1); i++)
             {
-                y++;
-            }
-            else{
-                for (int i = 0; i < dgrid.GetLength(1); i++)
+                if (dgrid[0,i].Contains(path+'E'))
                 {
-                    if (dgrid[0,i].Contains(path+'E'))
-                    {
-                        y=i;
-                        break;
-                    }
-                    if (dgrid[0,i].Contains(path+'C'))
-                    {
-                        y=i;
-                        break;
-                    }
+                    y=i;
+                    break;
+
+                }
+                if (dgrid[0,i].Contains(path+'C'))
+                {
+                    y=i;
+                    break;
                 }
             }
         }
         //check if dialogue has ended
         if (Input.GetMouseButtonDown(0) && !dia){ 
+            if(dgrid[0,y] == "N2E"||dgrid[0,y] == "N1E"){
+                SceneManager.LoadScene(sceneName: "Theater");
+            }
+            if (SceneManager.GetActiveScene().name == "Theater")
+            {
+                SceneManager.LoadScene(sceneName: "BedroomDay2");
+            }
             y=1;
             gameObject.SetActive(false);
             dia = true;
@@ -67,25 +71,56 @@ public class Dialogue : MonoBehaviour
         }
     }
     public void dialogueStart(int charnum){
-
-
-        if (charnum == 1)
-        {  
-            //speaker.text = "Bea";
-            csvDialogue = Resources.Load<TextAsset>("Bea1");
-            dgrid = csvGrid(csvDialogue.text);
-        }
-        if (charnum == 2)
+        if (SceneManager.GetActiveScene().name == "Lunchroom1")
         {
-            speaker.text = "Natalie";
-            csvDialogue = Resources.Load<TextAsset>("Natalie1");
-            dgrid = csvGrid(csvDialogue.text);
+            if (charnum == 1)
+            {  
+                //speaker.text = "Bea";
+                csvDialogue = Resources.Load<TextAsset>("Bea1");
+                dgrid = csvGrid(csvDialogue.text);
+            }
+            if (charnum == 2)
+            {
+                speaker.text = "Natalie";
+                csvDialogue = Resources.Load<TextAsset>("Natalie1");
+                dgrid = csvGrid(csvDialogue.text);
+            }
+            if (charnum == 3)
+            {
+                //speaker.text = "Joe";
+                csvDialogue = Resources.Load<TextAsset>("Joe1");
+                dgrid = csvGrid(csvDialogue.text);
+            }
         }
-        if (charnum == 3)
+        if (SceneManager.GetActiveScene().name == "Theater")
         {
-            //speaker.text = "Joe";
-            csvDialogue = Resources.Load<TextAsset>("Joe1");
-            dgrid = csvGrid(csvDialogue.text);
+            if (charnum == 2)
+            {
+                speaker.text = "Natalie";
+                csvDialogue = Resources.Load<TextAsset>("NatalieT");
+                dgrid = csvGrid(csvDialogue.text);
+            }
+        }
+        if (SceneManager.GetActiveScene().name == "Lunchroom2")
+        {
+            if (charnum == 1)
+            {  
+                //speaker.text = "Bea";
+                csvDialogue = Resources.Load<TextAsset>("Bea1");
+                dgrid = csvGrid(csvDialogue.text);
+            }
+            if (charnum == 2)
+            {
+                speaker.text = "Natalie";
+                csvDialogue = Resources.Load<TextAsset>("Natalie1");
+                dgrid = csvGrid(csvDialogue.text);
+            }
+            if (charnum == 3)
+            {
+                //speaker.text = "Joe";
+                csvDialogue = Resources.Load<TextAsset>("Joe1");
+                dgrid = csvGrid(csvDialogue.text);
+            }
         }
     }
 
@@ -94,6 +129,7 @@ public class Dialogue : MonoBehaviour
         choicebox2.SetActive(true);
         choicebox1.GetComponentInChildren<Text>().text = dgrid[2,y+1];
         choicebox2.GetComponentInChildren<Text>().text = dgrid[2,y+2];
+        mainbox.GetComponent<Button>().interactable = false;
 
 
 
@@ -107,6 +143,12 @@ public class Dialogue : MonoBehaviour
         choicebox1.SetActive(false);
         choicebox2.SetActive(false);
         path += '2';
+    }
+    void progess(){
+        if (path == "")
+        {
+            y++;
+        }
     }
     private void dialoguePrint(string[,] grid, int y){
         dbox.text = grid[2,y];
