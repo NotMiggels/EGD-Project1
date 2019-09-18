@@ -120,7 +120,7 @@ public class Tweet : MonoBehaviour
 
     public void SetAllValues()
     {
-        //avatarGo.GetComponent<Image>().sprite = avatar;
+        avatarGo.GetComponent<Image>().sprite = avatar;
         name_dateGo.GetComponent<Text>().text = "<b>" + username + "</b>" + "  ·  " + date;
         contentGo.GetComponentInChildren<Text>().text = tweet;
 
@@ -131,7 +131,7 @@ public class Tweet : MonoBehaviour
         }
 
         retweetGo.GetComponentInChildren<Text>().text = retweet.ToString();
-        commentGo.GetComponentInChildren<Text>().text = retweet.ToString();
+        commentGo.GetComponentInChildren<Text>().text = comment.ToString();
         if (liked && !alreadyLiked)
         {
             like += 1;
