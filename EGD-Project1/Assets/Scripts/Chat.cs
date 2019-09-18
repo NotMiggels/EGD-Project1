@@ -118,7 +118,7 @@ public class Chat : MonoBehaviour
             //index = texts[index].linkTo;
         }
         yield return new WaitForSeconds(3);
-        SceneManager.LoadScene(2);
+        SceneManager.LoadScene(6);
         // do something like jump to another scene
     }
 

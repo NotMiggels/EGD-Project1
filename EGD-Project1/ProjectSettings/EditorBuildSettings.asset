@@ -23,4 +23,25 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/title.unity
     guid: 466dfd77e386ed94fade6b828fa387ed
+  - enabled: 1
+    path: Assets/Scenes/Lunchroom_f_day1.unity
+    guid: 508aa1f6ded78bd4296885c10eca2c60
+  - enabled: 0
+    path: Assets/__DELETED_GUID_Trash/e045db28d1b5da747bf0330cdb5736da
+    guid: e045db28d1b5da747bf0330cdb5736da
+  - enabled: 1
+    path: Assets/Scenes/Lunchroom_f_day2.unity
+    guid: b7e3eb548e62dca45996efab6e9baa50
+  - enabled: 1
+    path: Assets/Scenes/Theater_F_Day1.unity
+    guid: f077617a8ab05d243ad2ef987fafc04c
+  - enabled: 1
+    path: Assets/Scenes/ending1.unity
+    guid: 44fd2c05a42c4914fbcc890bda44287e
+  - enabled: 1
+    path: Assets/Scenes/ending2.unity
+    guid: 5196360f0cc0856429f42994dfe4a544
+  - enabled: 1
+    path: Assets/Scenes/credits.unity
+    guid: f1c1f657df6dc6d428bd927bfb56ac3b
   m_configObjects: {}

@@ -1,15 +1,17 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityEngine.Events;
 
-public class SceneManagement : MonoBehaviour
+public class DialogueOptions : MonoBehaviour
 {
+    public Text myChoice;
+    public Dialogue_F dialogueControl;
+
     // Start is called before the first frame update
     void Start()
     {
-
         
     }
 
@@ -19,19 +21,14 @@ public class SceneManagement : MonoBehaviour
         
     }
 
-    public void GoLunch()
+    public void SelectA()
     {
-        SceneManager.LoadScene(7);
+        dialogueControl.SetMyChoice("A");
     }
 
-    public void StartGame()
+    public void SelectB()
     {
-        SceneManager.LoadScene(1);
+        dialogueControl.SetMyChoice("B");
     }
-
-    public void ToCredits()
-    {
-        SceneManager.LoadScene(11);
-    }
-
+    
 }
