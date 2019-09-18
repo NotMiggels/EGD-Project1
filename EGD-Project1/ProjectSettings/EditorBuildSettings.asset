@@ -12,7 +12,7 @@ EditorBuildSettings:
     path: Assets/Scenes/BedroomDay1.unity
     guid: db6141b5e566ddf439a7ec9b39536c98
   - enabled: 1
-    path: Assets/Scenes/Lunchroom.unity
+    path: Assets/Scenes/Lunchroom1.unity
     guid: 8cb7f1b03119e1c4781be42e6da0be0f
   - enabled: 1
     path: Assets/Scenes/Theater.unity
