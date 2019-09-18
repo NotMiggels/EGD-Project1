@@ -16,8 +16,6 @@ public class Dialogue : MonoBehaviour
     public GameObject choicebox1;
     public GameObject choicebox2;
     private string path;
-    public Text choice1;
-    public Text choice2;
 
     public Text speaker;
     public TextAsset csvDialogue;
@@ -30,6 +28,8 @@ public class Dialogue : MonoBehaviour
         y = 1;
         dia = true;
         path = "";
+        choicebox1.GetComponent<Button>().onClick.AddListener(pathchange1);
+        choicebox2.GetComponent<Button>().onClick.AddListener(pathchange2);
     }
 
     // Update is called once per frame
@@ -38,7 +38,25 @@ public class Dialogue : MonoBehaviour
         print(path);
         dialoguePrint(dgrid, y);
         if (Input.GetMouseButtonDown(0) && dia){ 
-            y++;
+            if (path == "")
+            {
+                y++;
+            }
+            else{
+                for (int i = 0; i < dgrid.GetLength(1); i++)
+                {
+                    if (dgrid[0,i].Contains(path+'E'))
+                    {
+                        y=i;
+                        break;
+                    }
+                    if (dgrid[0,i].Contains(path+'C'))
+                    {
+                        y=i;
+                        break;
+                    }
+                }
+            }
         }
         //check if dialogue has ended
         if (Input.GetMouseButtonDown(0) && !dia){ 
@@ -74,9 +92,21 @@ public class Dialogue : MonoBehaviour
     private void choice(){
         choicebox1.SetActive(true);
         choicebox2.SetActive(true);
-        choice1.text = dgrid[2,y+1];
-        choice2.text = dgrid[2,y+2];
+        choicebox1.GetComponentInChildren<Text>().text = dgrid[2,y+1];
+        choicebox2.GetComponentInChildren<Text>().text = dgrid[2,y+2];
 
+
+
+    }
+    void pathchange1(){
+        choicebox1.SetActive(false);
+        choicebox2.SetActive(false);
+        path += '1';
+    }
+    void pathchange2(){
+        choicebox1.SetActive(false);
+        choicebox2.SetActive(false);
+        path += '2';
     }
     private void dialoguePrint(string[,] grid, int y){
         dbox.text = grid[2,y];
@@ -91,6 +121,8 @@ public class Dialogue : MonoBehaviour
         if (grid[0,y].Contains('E'))
         {
             dia = false;
+            choicebox1.SetActive(false);
+            choicebox2.SetActive(false);
         }
     }
     static public string [,] csvGrid(string text){
