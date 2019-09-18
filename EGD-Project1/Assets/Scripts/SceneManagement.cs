@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class GoToLunchroom : MonoBehaviour
+public class SceneManagement : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()
@@ -20,5 +20,10 @@ public class GoToLunchroom : MonoBehaviour
     public void GoLunch()
     {
         SceneManager.LoadScene(2);
+    }
+
+    public void StartGame()
+    {
+        SceneManager.LoadScene(1);
     }
 }

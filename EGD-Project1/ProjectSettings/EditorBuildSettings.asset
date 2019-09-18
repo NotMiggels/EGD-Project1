@@ -20,4 +20,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/BedroomDay2.unity
     guid: bc41e63387868a04e8e3c63eacafdfe5
+  - enabled: 1
+    path: Assets/Scenes/title.unity
+    guid: 466dfd77e386ed94fade6b828fa387ed
   m_configObjects: {}
