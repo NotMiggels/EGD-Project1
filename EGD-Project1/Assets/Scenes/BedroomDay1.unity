@@ -835,6 +835,11 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1539488254799794396, guid: c71466fad297844f48e7fa4a51543551,
+        type: 3}
+      propertyPath: m_Text
+      value: NattyNat
+      objectReference: {fileID: 0}
     - target: {fileID: 3885396818970959264, guid: c71466fad297844f48e7fa4a51543551,
         type: 3}
       propertyPath: m_AnchorMin.y
