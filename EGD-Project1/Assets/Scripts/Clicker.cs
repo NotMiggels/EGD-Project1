@@ -5,6 +5,7 @@ using UnityEngine;
 public class Clicker : MonoBehaviour
 {
     public GameObject canv;
+    public AudioSource clickSound;
     // Start is called before the first frame update
     void Start()
     {
@@ -17,6 +18,7 @@ public class Clicker : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             //some presettings
+            clickSound.Play();
             Vector2 raypos = new Vector2(Camera.main.ScreenToWorldPoint(Input.mousePosition).x,
              Camera.main.ScreenToWorldPoint(Input.mousePosition).y);
             RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
