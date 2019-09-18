@@ -35,10 +35,7 @@ public class Dialogue : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown("space"))
-        {
-            gameObject.SetActive(false);
-        }
+        print(path);
         dialoguePrint(dgrid, y);
         if (Input.GetMouseButtonDown(0) && dia){ 
             y++;
@@ -77,8 +74,8 @@ public class Dialogue : MonoBehaviour
     private void choice(){
         choicebox1.SetActive(true);
         choicebox2.SetActive(true);
-        choice1.text = "Choice 1";
-        choice2.text = "Choice 2";
+        choice1.text = dgrid[2,y+1];
+        choice2.text = dgrid[2,y+2];
 
     }
     private void dialoguePrint(string[,] grid, int y){
@@ -87,6 +84,7 @@ public class Dialogue : MonoBehaviour
         //if the ID contains a c it has reached a choice
         if (grid[0,y].Contains('C'))
         {
+            print("choice");
             choice();
         }
         //if the ID contains an E it has reached the end

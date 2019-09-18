@@ -3,10 +3,10 @@ BC,Bea,Hey Peter whats up
 P1,Peter,Beatrice you're a girl what do I do with this girl tonight
 P2,Peter,"Not much, excited to see the new movie tonight"
 B1C,Bea,Yes. I'm a girl. Does that mean I want to help you with your girl problems? No.
-B2C,Bea,Oh yeah? I saw it last night at the prescreening. It was really good! 
 P11,Peter,But I need help :(
 P12,Peter,"Hey, I didnt assume your girlness would help with my girl issues. I just hoped a girl would help with girl things"
-P21E,Peter,"Spoilers! Fuck that noise, ill see you later."
-P22E,Peter,"Dope! I cant wait to see it, we can talk about it tomorrow"
 B11E,Bea,"Tooooooooooooo bad. You're smart, i'm sure youll figure it out"
 B12E,Bea,Shut up.
+B2C,Bea,Oh yeah? I saw it last night at the prescreening. It was really good! 
+P21E,Peter,"Spoilers! Fuck that noise, ill see you later."
+P22E,Peter,"Dope! I cant wait to see it, we can talk about it tomorrow"
