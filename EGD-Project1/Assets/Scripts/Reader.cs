@@ -1,9 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
-public class GoToLunchroom : MonoBehaviour
+public class Reader : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()
@@ -15,10 +14,5 @@ public class GoToLunchroom : MonoBehaviour
     void Update()
     {
         
-    }
-
-    public void GoLunch()
-    {
-        SceneManager.LoadScene(2);
     }
 }
