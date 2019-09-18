@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
@@ -8,10 +9,11 @@ public class Dialogue : MonoBehaviour
 {
     private int day;
     public Text dbox;
+    public TextAsset csvDialogue;
+
     // Start is called before the first frame update
     void Start()
     {
-
     }
 
     // Update is called once per frame
@@ -27,6 +29,7 @@ public class Dialogue : MonoBehaviour
 
         if (charnum == 1)
         {
+            csvDialogue = Resources.Load<TextAsset>("Joe1");
             dbox.text = "Char 1";
         }
         if (charnum == 2)
